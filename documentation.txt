@@ -777,3 +777,33 @@ bind déplace le pointeur de monBtn sur Obj;
 
 
 https://www.youtube.com/watch?v=6tC4tv9MlkI (Les classes)
+
+*********
+PROTOTYPE
+*********
+EX1:
+let geek1 = {
+    prop1() {
+        return 'Object.isExtensible()';
+    },
+    prop2() {
+        return 'JavaScript ';
+    }
+}
+let geek2 = {
+    prop3() {
+        return 'Geeksforgeeks';
+    }
+}   
+
+Object.setPrototypeOf(geek2, geek1);   //geek2 reçoit les prop riétés et méthodes de geek1  
+
+console.dir(geek2);                    //liste les propriétés et méthodes de geek2
+console.log(geek2.prop3());
+console.log(geek2.prop2());
+console.log(geek2.prop1());
+
+Output:
+  "Geeksforgeeks"
+  "JavaScript "
+  "Object.isExtensible()"
