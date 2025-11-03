@@ -778,9 +778,9 @@ bind déplace le pointeur de monBtn sur Obj;
 
 https://www.youtube.com/watch?v=6tC4tv9MlkI (Les classes)
 
-*********
-PROTOTYPE
-*********
+*****************
+PROTOTYPE BINDING
+*****************
 EX1:
 let geek1 = {
     prop1() {
@@ -797,7 +797,7 @@ let geek2 = {
 }   
 
 Object.setPrototypeOf(geek2, geek1);   //geek2 reçoit les propriétés et méthodes de geek1  
-
++++++++++++++++++++++++++++++++++++
 console.dir(geek2);                    //liste les propriétés et méthodes de geek2
 console.log(geek2.prop3());
 console.log(geek2.prop2());
@@ -807,3 +807,26 @@ Output:
   "Geeksforgeeks"
   "JavaScript "
   "Object.isExtensible()"
+
+***************
+PROTOTYPE CHAIN
+***************
+const parent = {
+    species:'Human',
+    breathe:() => {log('Breathing')}
+}
+log(parent);
+
+const enfant = Object.create(parent); //"Object attache enfant à parent"
+enfant.nom = 'Georges';
+enfant.age = 70;
+log(enfant);
+
+const petitEnfant = Object.create(enfant)  //"Object attache petitEnfant à enfant"
+log(petitEnfant);
+petitEnfant.age = 5;
+
+
+log(petitEnfant.age);     //5
+log(petitEnfant.nom);     //Georges
+log(petitEnfant.species); //Human

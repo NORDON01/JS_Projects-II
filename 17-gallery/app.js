@@ -31,7 +31,7 @@ function Gallery(element){
 Gallery.prototype.openModal= function(){
   log(this);
   log('open modal');
-}
+}();
 
 //Création de 2 éléments à partir du DOM  à l'aide du constructeur
 const nature = new Gallery(getElement('.nature'));
