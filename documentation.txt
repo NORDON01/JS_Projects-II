@@ -796,7 +796,7 @@ let geek2 = {
     }
 }   
 
-Object.setPrototypeOf(geek2, geek1);   //geek2 reçoit les prop riétés et méthodes de geek1  
+Object.setPrototypeOf(geek2, geek1);   //geek2 reçoit les propriétés et méthodes de geek1  
 
 console.dir(geek2);                    //liste les propriétés et méthodes de geek2
 console.log(geek2.prop3());
