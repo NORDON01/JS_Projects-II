@@ -932,9 +932,9 @@ function User(name) {
   this.isAdmin = false;
 
   // return this;  (implicitement)
+}
 
 Ex1:    
-
 function playerCreator(name, score) {
   this.name = name;
   this.score = score;
