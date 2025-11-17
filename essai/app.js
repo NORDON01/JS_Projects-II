@@ -1,22 +1,23 @@
 const log = console.log;
 
-const parent = {
-    species:'Human',
-    breathe:() => {log('Breathing')}
+//FACTORY:
+//Object.create(proto, [propertiesObject]);
+
+var personActions = {
+    getFullName() {
+      return this.firstName + ' ' + this.lastName;
+    },
+};
+
+function createPerson(firstName, lastName) {
+  let person = Object.create(personActions);
+  person.firstName = firstName;
+  person.lastName = lastName;
+  return person;
 }
-log(parent);
 
-const enfant = Object.create(parent); //"Object attache enfant à parent"
-enfant.nom = 'Georges';
-enfant.age = 70;
-log(enfant);
+let person1 = createPerson('John', 'Doe');
+let person2 = createPerson('Jane', 'Doe');
 
-const petitEnfant = Object.create(enfant)  //"Object attache petitEnfant à enfant"
-log(petitEnfant);
-petitEnfant.age = 5;
-
-
-log(petitEnfant.age);
-log(petitEnfant.nom);
-log(petitEnfant.species);
-
+console.log(person1.getFullName());
+console.log(person2.getFullName());

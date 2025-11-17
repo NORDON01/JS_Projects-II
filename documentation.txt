@@ -322,9 +322,9 @@ window.addEventListener('load', function(){ /* When ALL files are loaded */
     preloader.classList.add('hide-preloader');
 })
 
-***************
+******************
 10-SCROLL STATIQUE
-***************
+******************
 => Date:
   JS:
   let date = document.querySelector('#date');
@@ -413,9 +413,9 @@ scrollLinks.forEach(function(link){
 })
 
 
-**********************
+*************************
 10-SMOOTH SCROLL COMPLETE
-**********************
+*************************
 
 ????
 
@@ -654,7 +654,7 @@ The input element has attributes:
 
       TextContent   NO          X             X         X
 
-tat=> Value property: The value property sets or returns 
+=> Value property: The value property sets or returns 
    the value of the value attribute of a text field.     
 
    Example: <input type="text" id="grocery".../> donne grocery.value 
@@ -817,12 +817,14 @@ const parent = {
 }
 log(parent);
 
-const enfant = Object.create(parent); //"Object attache enfant à parent"
+const enfant = Object.create(parent); //"Object attache enfant à parent"  
+      ++++++++++++++++++++++++++++++
 enfant.nom = 'Georges';
 enfant.age = 70;
 log(enfant);
 
 const petitEnfant = Object.create(enfant)  //"Object attache petitEnfant à enfant"
+      +++++++++++++++++++++++++++++++++++
 log(petitEnfant);
 petitEnfant.age = 5;
 
@@ -830,3 +832,123 @@ petitEnfant.age = 5;
 log(petitEnfant.age);     //5
 log(petitEnfant.nom);     //Georges
 log(petitEnfant.species); //Human
+
+*****************
+FACTORY FUNCTIONS (Sans PROTOTYPE ?,  sans NEW )
+*****************
+A function that creates and returns new objects. These objects share common properties and methods.
+To create a few objects use object literals. But to create many use a factory function.
+
+
+
+//FACTORY
+Ex1:
+function createPerson(name){
+    return {
+        name,
+        talk: function () {return `I am ${name}`} 
+    }
+}
+
+const moi = createPerson('Georges');
+const toi = createPerson('Arthur');
+
+log(moi.talk());
+log(toi.name);
+
+Ex2:
+The code works perfectly fine. However, in practice, you will rarely use the factory functions. 
+Instead, you use classes or constructor/prototype patterns.
+
+var personActions = {
+    +++++++++++++
+    getFullName() {
+      return this.firstName + ' ' + this.lastName;
+    },
+};
+
+function createPerson(firstName, lastName) {
+  let person = Object.create(personActions);
+               ++++++++++++++++++++++++++++
+  person.firstName = firstName;
+  person.lastName = lastName;
+  return person;
+}
+
+let person1 = createPerson('John', 'Doe');
+let person2 = createPerson('Jane', 'Doe');
+
+console.log(person1.getFullName());
+console.log(person2.getFullName());   
+
+*******
+CLASSES (avec CONSTRUCTOR + NEW + THIS + PROTOTYPE -sous entendu-)
+*******
+  Classes are a syntactic sugar of constructors in Javascript.
+
+  Notice that instead of adding increment and login methods on the prototype explicitly,
+  we nicely tuck them inside the class object though under the hood 
+  they are added to the prototype(implicitly).
+           ++++++++++++++++++++++++++++++++++
+class playerCreator{
++++++
+  constructor(name,score){
+  +++++++++++
+  this.name = name;
+  this.score = score;
+  }
+
+increment: function () {
+  this.score++;
+};
+
+login:  function () {
+  this.login = false;
+};
+}
+
+***********
+CONSTRUCTOR (avec THIS + NEW + PROTOTYPE)
+*********** 
+Les fonctions constructeur sont techniquement des fonctions habituelles. 
+Il existe cependant deux conventions :
+
+    Elles sont nommées avec une lettre majuscule en premier.
+    Elles ne devraient être executées qu’avec l’opérateur "new".
+
+Quand une fonction est exécutée avec new, elle effectue les étapes suivantes :
+
+    Un nouvel objet vide est créé et affecté à this.
+    Le corps de la fonction est exécuté. Habituellement, il modifie this, y ajoutant de nouvelles propriétés.
+    La valeur de this est retournée.
+
+En d’autres termes, new User(...) fait quelque chose comme :
+
+function User(name) {
+  // this = {};  (implicitement)
+
+  // ajoute des propriétés à this
+  this.name = name;
+  this.isAdmin = false;
+
+  // return this;  (implicitement)
+
+Ex1:    
+
+function playerCreator(name, score) {
+  this.name = name;
+  this.score = score;
+}
+
+playerCreator.prototype.increment = function () {
+  this.score++;
+};
+playerCreator.prototype.login = function () {
+  this.login = false;
+};
+
+  The increment and login functions are placed on the prototype.
+                                    +++++++++++++++++++++++++++
+  They are shared functions so any object created by the constructor
+  has access to the methods. This saves memory.
+  
