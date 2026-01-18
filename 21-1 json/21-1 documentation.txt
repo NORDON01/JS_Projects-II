@@ -31,3 +31,12 @@ The request can be with or without credentials
 
 Properties of the XMLHttpRequest: readyState, status, statusText,
 response, responseText.
+*********
+21-1 JSON
+*********
+[
+  {"name":"john", "id":1, "random":[], "anObject":{}}
+]
+
+stringify: browser ==> server
+parse:     server ==> browser
