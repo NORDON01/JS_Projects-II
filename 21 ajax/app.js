@@ -1,4 +1,8 @@
 const log = console.log;
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', () => {getData()});
+
+const getData = () => {
 const xhr = new XMLHttpRequest();
 log(xhr);                          //readyState 0 - not sent
 xhr.open('GET','./api/sample.txt');//readyState 1 - open
@@ -17,5 +21,7 @@ xhr.onreadystatechange = function(){
     }
 }
 
-xhr.send();                        //readyState 4 - done      
+xhr.send();                        //readyState 4 - done
+}
+
 log('Hello world');

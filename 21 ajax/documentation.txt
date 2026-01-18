@@ -1146,3 +1146,4 @@ The request can be with or without credentials
 
 Properties of the XMLHttpRequest: readyState, status, statusText,
 response, responseText.
+
