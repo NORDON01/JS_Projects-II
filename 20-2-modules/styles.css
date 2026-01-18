@@ -1,0 +1,16 @@
+body{
+    text-align: center;
+}
+
+h1{
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.btn{
+    background: lightgray;
+    cursor: pointer;
+    margin-top: 6rem;
+}
