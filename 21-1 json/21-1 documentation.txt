@@ -38,5 +38,6 @@ response, responseText.
   {"name":"john", "id":1, "random":[], "anObject":{}}
 ]
 
-stringify: browser ==> server
-parse:     server ==> browser
+From browser to server and back:
+stringify:  browser ==> server
+JSON.parse: server ==> browser

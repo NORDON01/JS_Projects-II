@@ -1,17 +1,22 @@
 const log = console.log;
 const btn = document.querySelector('.btn');
-btn.addEventListener('click', () => {getData()});
-
-const getData = () => {
+const url = "./api/people.json";
+btn.addEventListener('click', () => {getData(url)});
+   
+function getData(url){
 const xhr = new XMLHttpRequest();
 log(xhr);                          //readyState 0 - not sent
-xhr.open('GET','./api/sample.txt');//readyState 1 - open
+xhr.open('GET', url);//readyState 1 - open
 xhr.onreadystatechange = function(){    
     if(xhr.readyState === 4 && xhr.status === 200){
-                                   //readyState 2, 3 - loading
-        const text = document.createElement('p');
-        text.textContent = xhr.responseText;
-        document.body.appendChild(text);
+        const data = JSON.parse(xhr.responseText);
+        log(data);
+        const displayData = data.map(item => {
+            return `<p>${item.name}</p>`
+        }).join('');
+        const element = document.createElement('div');
+        element.innerHTML = displayData;
+        document.body.appendChild(element);
     }else{
         log({
             status:xhr.status,
