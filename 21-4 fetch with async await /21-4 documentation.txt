@@ -1,0 +1,49 @@
+*******
+21 AJAX
+*******
+Asynchronous JAvascript and XML
+Originaly ajax used XML but today it uses JSON
+
+1-const xhr = new XMLHttpRequest();   //Créer une requête
+2-xhr.open('GET','./api/sample.txt'); //Ouvrir un fichier sur le serveur
+3-Dans le browser, taper:http://127.0.0.1:5500/api/sample.txt
+  pour vérifier le contenu du fichier.
+
+  Different states of the request:
+
+const xhr = new XMLHttpRequest();
+console.log("UNSENT", xhr.readyState); // readyState will be 0
+
+xhr.open("GET", "/api", true);
+console.log("OPENED", xhr.readyState); // readyState will be 1
+
+xhr.onprogress = () => {
+  console.log("LOADING", xhr.readyState);//readyState will be 3
+};
+
+xhr.onload = () => {
+  console.log("DONE", xhr.readyState); // readyState will be 4
+};
+
+xhr.send(null);
+
+The request can be with or without credentials
+
+Properties of the XMLHttpRequest: readyState, status, statusText,
+response, responseText.
+*********
+21-1 JSON
+*********
+[
+  {"name":"john", "id":1, "random":[], "anObject":{}}
+]
+
+From browser to server and back:
+stringify:  browser ==> server
+JSON.parse: server ==> browser
+
+**********
+21-2 FETCH
+**********
+Fetch is an alternative to xhr. Fetch was created later.
+Fetch is provided by the browser.
