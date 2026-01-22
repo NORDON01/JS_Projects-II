@@ -47,3 +47,11 @@ JSON.parse: server ==> browser
 **********
 Fetch is an alternative to xhr. Fetch was created later.
 Fetch is provided by the browser.
+
+**********************
+21-3 FETCH WITH BUTTON
+**********************
+
+***************************
+21-4 FETCH WITH ASYNC AWAIT
+***************************

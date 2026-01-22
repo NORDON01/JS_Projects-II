@@ -1,16 +1,13 @@
 const log = console.log;
 const url = "./api/people.json";
 const btn = document.querySelector('.btn');
-btn.addEventListener('click', () => {
-    fetch(url)
-    .then((response) =>response.json())
-    .then((data) => { log(data);
-                      displayItems(data);
-                    })
-    .catch((err) => log(err));
+btn.addEventListener('click', async() => {
+    const response = await fetch(url);
+    const data = await response.json();
+    displayItems(data);                
 })
 
-const displayItems = items => {
+const displayItems = (items)  => {
     const displayData = items.map((item) => {
      //   log(typeof(item));
         const {name} = item;
