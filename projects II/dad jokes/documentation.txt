@@ -1,0 +1,2 @@
+********************** DAD JOKES **********************
+Always test the URL in the browser before starting to code
