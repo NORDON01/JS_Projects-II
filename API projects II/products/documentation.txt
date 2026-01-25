@@ -1,0 +1,40 @@
+********************** DAD JOKES **********************
+Always test the URL in the browser before starting 
+to code.
+API = external source of data
+
+****
+DOCS
+****
+
+*****
+FETCH
+*****
+const url =  'https://icanhazdadjoke.com/';
+
+../...
+btn.addEventListener('click', () => {
+    fetchDadJoke();
+})
+
+const fetchDadJoke = async() => {
+    result.textContent = 'Loading...'
+  try{
+    const response = await fetch(url, {
+        headers:{
+            Accept: 'application/json',
+            'User-Agent': 'learning app'
+        }
+    })
+    if(!response.ok){
+        throw new Error('There was an error')
+    }
+    const data = await response.json();
+    log(data);
+    result.textContent = data.joke;
+  }catch(error){
+    log(error.message);
+    result.textContent = error.message;
+  }
+}; 
+
