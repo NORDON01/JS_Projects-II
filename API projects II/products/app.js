@@ -1,1 +1,1 @@
-console.log('products starter');
+const log = console.log;
