@@ -39,3 +39,42 @@ const fetchDadJoke = async() => {
 }; 
 
 ********************** PRODUCTS **********************
+
+***********
+AJAX STATES
+***********
+
+3 possible states for an AJAX application:
+- Loading
+- Display
+- Error
+
+If Loading is succesfull then Display
+If Loading is not sccessfull catch Error 
+
+
+****
+DOCS
+****
+
+course-api.com => javascript store products,
+                  javascript store single product
+
+*****
+FETCH
+*****
+If you are in web site "abc.com" you are not allowed to fetch data 
+from the same site. 
+  
+CORS = Cross Origin Resource Sharing   
+
+To solve the problem:
+    1 Type in the browser (Chrome):                  
+const url = 'https://cors-anywhere.herokuapp.com/https://course-api.com/javascript-store-products';
+
+    2 If it is not enough type a second request:
+    http://cors-anywhere.herokuapp.com/corsdemo   to get temporary access.
+
+To get the id of a product:
+     const {id} = product;
+     log(id);
