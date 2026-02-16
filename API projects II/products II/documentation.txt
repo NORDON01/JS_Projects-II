@@ -1,0 +1,139 @@
+********************** DAD JOKES **********************
+Always test the URL in the browser before starting 
+to code.
+API = external source of data
+
+****
+DOCS
+****
+
+*****
+FETCH
+*****
+const url =  'https://icanhazdadjoke.com/';
+
+../...
+btn.addEventListener('click', () => {
+    fetchDadJoke();
+})
+
+const fetchDadJoke = async() => {
+    result.textContent = 'Loading...'
+  try{
+    const response = await fetch(url, {
+        headers:{
+            Accept: 'application/json',
+            'User-Agent': 'learning app'
+        }
+    })
+    if(!response.ok){
+        throw new Error('There was an error')
+    }
+    const data = await response.json();
+    log(data);
+    result.textContent = data.joke;
+  }catch(error){
+    log(error.message);
+    result.textContent = error.message;
+  }
+}; 
+
+********************** PRODUCTS **********************
+
+***********
+AJAX STATES
+***********
+
+3 possible states for an AJAX application:
+- Loading
+- Display
+- Error
+
+If Loading is succesfull then Display
+If Loading is not sccessfull catch Error 
+
+
+****
+DOCS
+****
+
+course-api.com => javascript store products,
+                  javascript store single product
+
+*****
+FETCH
+*****
+If you are in web site "abc.com" you are not allowed to fetch data 
+from the same site. 
+  
+CORS = Cross Origin Resource Sharing   
+
+To solve the problem:
+    1 Type in the browser (Chrome):                  
+const url = 'https://cors-anywhere.herokuapp.com/https://course-api.com/javascript-store-products';
+
+    2 If it is not enough type a second request:
+    http://cors-anywhere.herokuapp.com/corsdemo   to get temporary access.
+
+To get the id of a product:
+     const {id} = product;
+     log(id);
+
+****************
+DISPLAY API DATA
+****************
+
+Voir app.js
+
+****************
+QUERY PARAMETERS
+****************
+Démarche pour l'extraction d'un article particulier de l'API:
+    return  `<a href="product.html?id=${id}&name=john&age=25" class="single-product">
+
+
+Typically you use async when you call a method that returns a Task, 
+and need to schedule work after the Task completes. 
+The easiest way to do that is to await the Task.
+An async method is much slower (40x) compared to a normal sync method.
+
+*************
+INITIAL LOGIC
+*************
+const log = console.log;
+
+const productDOM = document.querySelector('.product');
+log(productDOM);
+
+const url = 'https://course-api.com/javascript-store-single-product?id=recmg2a1ctaEJNZhu';
+/*rec43w3ipXvP28vog
+  rec4f2RIftFCb7aHh
+  rec8kkCmSiMkbkiko
+  recBohCqQsot4Q4II
+  recDG1JRZnbpRHpoy
+  recNWGyP7kjFhSqw3
+  recZEougL5bbY4AEx
+  recjMK1jgTb2ld7sv
+  recmg2a1ctaEJNZhu
+  recvKMNR3YFw0bEt3
+  recxaXFy5IW539sgM
+  recyqtRglGNGtO4Q5 */
+
+  const fetchProduct = async () => {
+    return 'product';
+  }
+
+  const displayProduct = (product) => {
+    log(product);
+  }
+
+  const start = async () => {         //A method that returns a Task
+    const data = await fetchProduct();//Await the Task
+    displayProduct(data);             //Scheduled work after Task is complete
+  }
+
+  start();
+  
+*************
+FETCH PRODUCT
+*************
